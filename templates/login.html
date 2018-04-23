@@ -32,9 +32,15 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
-				<form class="login100-form validate-form flex-sb flex-w" action="/login" method="POST">
+                                {% block login_form %}
+                                    <form class="login100-form validate-form flex-sb flex-w" action="{{ action }}" method="POST">
+                                {% endblock %}
 					<span class="login100-form-title p-b-51">
-						Login
+                                                {% if request.args.get('admin') %}
+						Login as Administrator
+                                                {% else %}
+                                                Login
+                                                {% endif %}
 					</span>
 
 
