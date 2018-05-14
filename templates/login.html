@@ -33,7 +33,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
                                 {% block login_form %}
-                                    <form class="login100-form validate-form flex-sb flex-w" action="{{ action }}" method="POST">
+                                    <form class="login100-form validate-form flex-sb flex-w" action="/login" method="POST">
                                 {% endblock %}
 					<span class="login100-form-title p-b-51">
                                                 {% if request.args.get('admin') %}

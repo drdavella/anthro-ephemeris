@@ -11,15 +11,16 @@ def welcome():
         app.logger.info('user {} is already logged in'.format(session['user_id']))
         return redirect(url_for('user_page'))
 
-    action = '/login?admin=true' if request.args.get('admin') else '/login'
-    return render_template('login.html', context={'action': action})
+    session['admin-attempt'] = 'admin' in request.args
+    return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
     password = request.form['password']
 
-    if request.args.get('admin'):
+    admin = session.pop('admin-attempt')
+    if admin:
         app.logger.info('admin login attempt')
 
     if username == 'ddavella' and password == 'password':
